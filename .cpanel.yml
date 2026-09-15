@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/gkjwonog
+    - /bin/cp -R laravel $DEPLOYPATH/
+    - /bin/cp -R public_html $DEPLOYPATH/
