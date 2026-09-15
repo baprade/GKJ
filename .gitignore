@@ -1,0 +1,83 @@
+# Environment and credentials
+.env
+.env.*
+!.env.example
+laravel/.env
+laravel/.env.*
+!laravel/.env.example
+
+# Database (SQLite containing congregation data)
+*.sqlite
+*.sqlite*
+database/*.sqlite*
+laravel/database/*.sqlite*
+
+# Storage and uploads (private member photos and documents)
+laravel/storage/app/private/*
+!laravel/storage/app/private/.gitignore
+laravel/storage/app/public/*
+!laravel/storage/app/public/.gitignore
+laravel/storage/framework/cache/*
+!laravel/storage/framework/cache/.gitignore
+laravel/storage/framework/sessions/*
+!laravel/storage/framework/sessions/.gitignore
+laravel/storage/framework/views/*
+!laravel/storage/framework/views/.gitignore
+laravel/storage/logs/*
+!laravel/storage/logs/.gitignore
+
+# Dependencies
+/vendor/
+/node_modules/
+laravel/vendor/
+laravel/node_modules/
+
+# Build caches & temp
+.phpunit.cache/
+.phpunit.result.cache
+laravel/.phpunit.cache/
+laravel/.phpunit.result.cache
+*.tmp
+pac*.tmp
+
+# IDEs & OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# cPanel system directories & archives
+.cagefs/
+.caldav/
+.cl.selector/
+.clwpos/
+.composer/
+.config/
+.cpanel/
+.htpasswds/
+.koality/
+.razor/
+.sitepad/
+.softaculous/
+.spamassassin/
+.subaccounts/
+.trash/
+.imunify_patch_id
+.myimunify_id
+.lastlogin
+.gemrc
+.ftpquota
+.bash*
+.sh*
+.zsh*
+.spamassassin*
+etc/
+logs/
+lscache/
+mail/
+public_ftp/
+ssl/
+tmp/
+*.zip
+*.tar
+*.gz
