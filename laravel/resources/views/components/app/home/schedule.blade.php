@@ -31,25 +31,25 @@
         <div class="p-6 sm:p-8 grid gap-6 lg:grid-cols-12">
             <!-- Kolom Induk (5 cols) -->
             <div class="lg:col-span-5 flex flex-col gap-4">
-                <div class="flex items-center justify-between pb-2 border-b border-neutral-200">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-7 h-7 rounded-md bg-neutral-900 text-white flex items-center justify-center text-xs">
+                <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-amber-900/10 text-amber-900 border border-amber-800/20 flex items-center justify-center text-base shrink-0 shadow-xs">
                             <i class="fa-solid fa-church"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-neutral-900 text-sm sm:text-base leading-tight">Gedung Induk</h3>
-                            <span class="text-[11px] text-neutral-500">Pusat GKJ Wonogiri</span>
+                            <h3 class="font-bold text-neutral-900 text-base leading-tight">Gedung Induk</h3>
+                            <span class="text-xs text-neutral-500">Pusat GKJ Wonogiri</span>
                         </div>
                     </div>
-                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 bg-neutral-100 text-neutral-700 rounded border border-neutral-200">Setiap Minggu</span>
+                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 text-neutral-700 rounded-md border border-neutral-200">Setiap Minggu</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
                     <!-- Ibadah Pagi -->
                     <div class="p-4 rounded-xl border border-neutral-200/90 bg-linear-to-br from-white to-neutral-50/50 hover:border-neutral-300 transition flex items-center justify-between">
                         <div class="flex items-start gap-3">
-                            <div class="mt-0.5 text-neutral-400">
-                                <i class="fa-regular fa-sun text-base text-amber-600"></i>
+                            <div class="w-8 h-8 rounded-full bg-amber-50 border border-amber-200/60 text-amber-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                                <i class="fa-regular fa-sun"></i>
                             </div>
                             <div>
                                 <div class="text-[11px] font-medium text-neutral-500 uppercase tracking-wide">Ibadah Pagi</div>
@@ -66,8 +66,8 @@
                     <!-- Ibadah Sore -->
                     <div class="p-4 rounded-xl border border-neutral-200/90 bg-linear-to-br from-white to-neutral-50/50 hover:border-neutral-300 transition flex items-center justify-between">
                         <div class="flex items-start gap-3">
-                            <div class="mt-0.5 text-neutral-400">
-                                <i class="fa-regular fa-moon text-base text-indigo-600"></i>
+                            <div class="w-8 h-8 rounded-full bg-indigo-50 border border-indigo-200/60 text-indigo-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                                <i class="fa-regular fa-moon"></i>
                             </div>
                             <div>
                                 <div class="text-[11px] font-medium text-neutral-500 uppercase tracking-wide">Ibadah Sore</div>
@@ -90,17 +90,17 @@
 
             <!-- Kolom Pepanthan (7 cols) -->
             <div class="lg:col-span-7 flex flex-col gap-4">
-                <div class="flex items-center justify-between pb-2 border-b border-neutral-200">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-7 h-7 rounded-md bg-neutral-100 text-neutral-800 border border-neutral-200 flex items-center justify-center text-xs">
+                <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-sky-900/10 text-sky-900 border border-sky-800/20 flex items-center justify-center text-base shrink-0 shadow-xs">
                             <i class="fa-solid fa-map-location-dot"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-neutral-900 text-sm sm:text-base leading-tight">Wilayah Pepanthan</h3>
-                            <span class="text-[11px] text-neutral-500">Cabang Persekutuan</span>
+                            <h3 class="font-bold text-neutral-900 text-base leading-tight">Wilayah Pepanthan</h3>
+                            <span class="text-xs text-neutral-500">Cabang Persekutuan</span>
                         </div>
                     </div>
-                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 bg-neutral-100 text-neutral-600 rounded border border-neutral-200">4 Lokasi</span>
+                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 text-neutral-600 rounded-md border border-neutral-200">4 Lokasi</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
