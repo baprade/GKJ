@@ -7,7 +7,7 @@
     <div class="flex justify-center">
         <x-app.footer-social-href href="https://wa.me/6287736136977" icon="whatsapp"/>
         <x-app.footer-social-href href="https://www.facebook.com/GerejaKristenJawaWonogiri/" icon="facebook"/>
-        <x-app.footer-social-href href="https://www.instagram.com/gkj_wonogiri/" icon="instagram"/>
+        <x-app.footer-social-href href="https://www.instagram.com/gkjwonogiri/" icon="instagram"/>
         <x-app.footer-social-href href="#" icon="x"/>
         <x-app.footer-social-href href="https://www.youtube.com/c/GKJWONOGIRI" icon="youtube"/>
         <x-app.footer-social-href href="#" icon="tiktok"/>

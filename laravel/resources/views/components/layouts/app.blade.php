@@ -61,7 +61,7 @@
   "sameAs": [
     "https://www.youtube.com/@GKJWONOGIRI",
     "https://www.facebook.com/GerejaKristenJawaWonogiri/",
-    "https://www.instagram.com/gkj_wonogiri/"
+    "https://www.instagram.com/gkjwonogiri/"
   ],
   "openingHoursSpecification": [
     {
