@@ -37,18 +37,46 @@
 {
   "@context": "https://schema.org",
   "@type": "Church",
-  "name": "{{ config('app.title', 'GKJ Wonogiri') }}",
-  "alternateName": "Gereja Kristen Jawa Wonogiri",
+  "@id": "https://www.gkj-wonogiri.com/#church",
+  "name": "GKJ Wonogiri",
+  "alternateName": ["Gereja Kristen Jawa Wonogiri", "GKJ Wonogiri Induk"],
   "url": "https://www.gkj-wonogiri.com",
   "logo": "{{ route('images', config('app.logo')) }}",
   "image": "{{ route('images', config('app.image')) }}",
   "description": "{{ config('app.description', 'Gereja Kristen Jawa Wonogiri melayani persekutuan, kesaksian, dan pelayanan jemaat di Kabupaten Wonogiri, Jawa Tengah.') }}",
+  "telephone": "+62-273-3201137",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Jl. Murtipranoto No. 92, Sanggrahan",
     "addressLocality": "Wonogiri",
     "addressRegion": "Jawa Tengah",
+    "postalCode": "57612",
     "addressCountry": "ID"
-  }
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -7.8183,
+    "longitude": 110.9255
+  },
+  "sameAs": [
+    "https://www.youtube.com/@GKJWONOGIRI",
+    "https://www.facebook.com/GerejaKristenJawaWonogiri/",
+    "https://www.instagram.com/gkj_wonogiri/"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "07:00",
+      "closes": "08:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "16:30",
+      "closes": "18:00"
+    }
+  ]
 }
 </script>
 </head>
