@@ -7,14 +7,14 @@
             <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left">
                 <img src="{{ route('images-homeslide', $item->photo_file) }}" alt="{{ $item->h1 ?? config('app.name') }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}" fetchpriority="{{ $loop->first ? 'high' : 'low' }}" decoding="async" uk-cover>
             </div>
-            <div class="uk-overlay uk-overlay-primary uk-position-cover bg-gradient-to-t from-black/80 via-black/40 to-black/20 flex items-center justify-center p-6">
+            <div class="uk-position-cover bg-gradient-to-t from-black/50 via-transparent to-black/10 flex items-center justify-center p-6">
                 <div class="flex flex-col w-full max-w-3xl gap-3 text-center md:text-left uk-transition-slide-bottom">
-                    <div class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl cinzel drop-shadow-md">{{ $item->h1 }}</div>
+                    <div class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl cinzel text-shadow-10">{{ $item->h1 }}</div>
                     @if($item->h2)
-                        <div class="text-base font-medium text-amber-200/90 sm:text-lg md:text-2xl drop-shadow">{{ $item->h2 }}</div>
+                        <div class="text-base font-medium text-amber-100 sm:text-lg md:text-2xl text-shadow-10">{{ $item->h2 }}</div>
                     @endif
                     @if($item->belly)
-                        <div class="max-w-2xl text-xs font-light text-neutral-200 sm:text-sm md:text-base drop-shadow-sm line-clamp-2 md:line-clamp-3">{{ $item->belly }}</div>
+                        <div class="max-w-2xl text-xs font-light text-white/90 sm:text-sm md:text-base text-shadow-10 line-clamp-2 md:line-clamp-3">{{ $item->belly }}</div>
                     @endif
                 </div>
             </div>
