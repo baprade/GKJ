@@ -58,6 +58,7 @@ class HomeSlideForm extends Form
 
             // simpan foto ori
             $this->photo_file_post->storeAs(path: 'homeslide/', name: $uniqueFileName);
+            $this->optimizeImage(storage_path('app/private/homeslide/'.$uniqueFileName));
 
             $this->photo_file_post = $uniqueFileName;
 
@@ -108,6 +109,7 @@ class HomeSlideForm extends Form
             $uniqueFileName = $fileName.'_'.$hurufAcak.'.'.$extension;
 
             $this->photo_file_post->storeAs(path: 'homeslide/', name: $uniqueFileName);
+            $this->optimizeImage(storage_path('app/private/homeslide/'.$uniqueFileName));
 
             $this->photo_file_post = $uniqueFileName;
         }
@@ -122,5 +124,40 @@ class HomeSlideForm extends Form
         Post::create($createPost);
 
         // $this->reset();
+    }
+
+    private function optimizeImage($sourcePath, $maxWidth = 1600, $quality = 82)
+    {
+        $info = @getimagesize($sourcePath);
+        if (!$info) return;
+
+        $mime = $info['mime'];
+        if ($mime === 'image/jpeg') {
+            $img = @imagecreatefromjpeg($sourcePath);
+        } elseif ($mime === 'image/png') {
+            $img = @imagecreatefrompng($sourcePath);
+        } elseif ($mime === 'image/webp') {
+            $img = @imagecreatefromwebp($sourcePath);
+        } else {
+            return;
+        }
+
+        if (!$img) return;
+
+        $origW = imagesx($img);
+        $origH = imagesy($img);
+
+        if ($origW > $maxWidth) {
+            $targetW = $maxWidth;
+            $targetH = (int) round(($origH / $origW) * $targetW);
+            $resized = imagecreatetruecolor($targetW, $targetH);
+            imagecopyresampled($resized, $img, 0, 0, 0, 0, $targetW, $targetH, $origW, $origH);
+            imagejpeg($resized, $sourcePath, $quality);
+            imagedestroy($resized);
+        } else {
+            imagejpeg($img, $sourcePath, $quality);
+        }
+
+        imagedestroy($img);
     }
 }

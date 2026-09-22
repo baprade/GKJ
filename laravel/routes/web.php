@@ -105,56 +105,56 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('images/{filename}', function ($filename) {
-    $path = storage_path('app/private/images/'.$filename);
+    $path = storage_path('app/private/images/'.basename($filename));
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images');
 
 Route::get('images/small/{filename}', function ($filename) {
-    $path = storage_path('app/private/small/'.$filename);
+    $path = storage_path('app/private/small/'.basename($filename));
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images-small');
 
 Route::get('images/medium/{filename}', function ($filename) {
-    $path = storage_path('app/private/medium/'.$filename);
+    $path = storage_path('app/private/medium/'.basename($filename));
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images-medium');
 
 Route::get('images/large/{filename}', function ($filename) {
-    $path = storage_path('app/private/large/'.$filename);
+    $path = storage_path('app/private/large/'.basename($filename));
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images-large');
 
 Route::get('images/ori/{filename}', function ($filename) {
-    $path = storage_path('app/private/original/'.$filename);
+    $path = storage_path('app/private/original/'.basename($filename));
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images-ori');
 
 Route::get('images/homeslide/{filename}', function ($filename) {
-    $path = storage_path('app/private/homeslide/'.$filename);
+    $path = storage_path('app/private/homeslide/'.basename($filename));
 
     if (! file_exists($path)) {
         abort(404);
     }
 
-    return response()->file($path);
+    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
 })->name('images-homeslide');
