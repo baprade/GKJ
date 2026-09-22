@@ -2,38 +2,7 @@
     <a class="md:hidden" href="{{ route('dashboard') }}" wire:navigate>
         <img class="h-6 text-xs" src="{{ route('images', config('app.logo')) }}" alt="{{ config('app.name') }}"/>
     </a>
-    <div class="hidden text-xs md:block" id="tanggal">
-<script>
-    function updateDateTime() {
-        // Konfigurasi opsi untuk format tanggal dalam bahasa Indonesia
-        const options = {
-            weekday: 'long', // Hari dalam nama lengkap (contoh: "Selasa")
-            day: 'numeric',
-            month: 'long',   // Nama bulan dalam nama lengkap (contoh: "November")
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false      // Format 24 jam
-        };
-                // second: '2-digit', Tambahkan detik
-
-        // Ambil tanggal saat ini
-        const date = new Date();
-
-        // Formatkan tanggal sesuai opsi di atas
-        const formattedDate = new Intl.DateTimeFormat('id-ID', options).format(date);
-
-        // Tampilkan hasil di elemen dengan id 'tanggal'
-        document.getElementById('tanggal').textContent = `${formattedDate} WIB`;
-    }
-
-    // Perbarui tanggal dan waktu setiap detik
-    setInterval(updateDateTime, 1000);
-
-    // Panggil fungsi sekali saat halaman dimuat
-    updateDateTime();
-</script>
-    </div>
+    <div></div>
 @auth
     <div class="flex items-center gap-4 sm:gap-6">
         <div class="flex items-center gap-2 cursor-pointer uk-navbar-toggle-animate md:hidden">

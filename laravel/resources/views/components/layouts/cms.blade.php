@@ -23,13 +23,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wdth,wght,YTLC@0,6..12,75..125,200..1000,440..540;1,6..12,75..125,200..1000,440..540&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+@if (request()->routeIs('cms-posts-create') || request()->routeIs('cms-posts-edit'))
 <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
-
-{{-- @if (request()->routeIs('cms-posts-create') || request()->routeIs('cms-posts-edit')) --}}
 <link rel="stylesheet" href="{{ asset('css/summernote-lite.0818.min.css') }}"/>
 <script src="{{ asset('js/summernote-lite.0818.min.js') }}"></script>
 <script src="{{ asset('js/summernote-pagebreak.js') }}"></script>
-{{-- @endif --}}
+@endif
 
 <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}" />
 {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
