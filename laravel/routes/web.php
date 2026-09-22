@@ -5,16 +5,47 @@ use Spatie\Sitemap\SitemapGenerator;
 use Illuminate\Support\Facades\Response;
 
 Route::get('/sitemap.xml', function () {
-    $sitemapPath = public_path('sitemap.xml');
+    $sitemap = Spatie\Sitemap\Sitemap::create()
+        ->add(Spatie\Sitemap\Tags\Url::create('/')->setPriority(1.0)->setChangeFrequency('daily'))
+        ->add(Spatie\Sitemap\Tags\Url::create('/berita')->setPriority(0.9)->setChangeFrequency('daily'))
+        ->add(Spatie\Sitemap\Tags\Url::create('/galeri/foto')->setPriority(0.8)->setChangeFrequency('weekly'))
+        ->add(Spatie\Sitemap\Tags\Url::create('/galeri/video')->setPriority(0.8)->setChangeFrequency('weekly'));
 
-    // Jika sitemap belum ada, generate otomatis
-    if (!file_exists($sitemapPath)) {
-        SitemapGenerator::create(config('app.url'))->writeToFile($sitemapPath);
+    // Formulir Pelayanan Publik
+    $forms = ['registrasi', 'kelahiran', 'meninggal', 'titip-warga', 'atestasi', 'pengakuan', 'pernikahan', 'baptis', 'sidi'];
+    foreach ($forms as $form) {
+        $sitemap->add(Spatie\Sitemap\Tags\Url::create('/form/' . $form)->setPriority(0.5)->setChangeFrequency('monthly'));
     }
 
-    return Response::file($sitemapPath, [
-        'Content-Type' => 'application/xml'
-    ]);
+    // Halaman Profil / Tentang Gereja (id_format = 1)
+    $abouts = \App\Models\Post::where('id_format', 1)
+        ->where('onoff', 1)
+        ->get();
+
+    foreach ($abouts as $about) {
+        $sitemap->add(Spatie\Sitemap\Tags\Url::create('/tentang/' . $about->slug)->setPriority(0.7)->setChangeFrequency('monthly'));
+    }
+
+    // Semua Postingan Publik (Berita, Renungan, Warta, Foto, Video)
+    $posts = \App\Models\Post::whereIn('id_format', [2, 3, 4])
+        ->where('onoff', 1)
+        ->where('created_at', '<=', now())
+        ->with('format')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    foreach ($posts as $post) {
+        $formatSlug = $post->format->slug ?? 'berita';
+        $path = $formatSlug . '/' . $post->id . '/' . $post->slug;
+        $sitemap->add(
+            Spatie\Sitemap\Tags\Url::create($path)
+                ->setLastModificationDate($post->updated_at ?? $post->created_at)
+                ->setPriority(0.8)
+                ->setChangeFrequency('monthly')
+        );
+    }
+
+    return $sitemap->toResponse(request());
 });
 
 Route::get('/', App\Livewire\App\Home::class)->name('home');
