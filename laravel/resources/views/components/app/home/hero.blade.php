@@ -4,7 +4,7 @@
 @if ($homeslide->isNotEmpty())
     @foreach ($homeslide as $item)
         <div>
-            <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left"><img src="{{ route('images-homeslide', $item->photo_file) }}" alt="" uk-cover></div>
+            <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left"><img src="{{ route('images-homeslide', $item->photo_file) }}" alt="{{ $item->h1 ?? config('app.name') }}" uk-cover></div>
             <div class="flex flex-col w-full max-w-3xl gap-6 bg-transparent rounded uk-overlay uk-overlay-primary uk-position-center text-start uk-transition-slide-bottom">
                 <div class="text-3xl font-bold text-white md:text-4xl lg:text-5xl text-shadow-10">{{ $item->h1 }}</div>
                 <div class="text-2xl text-white lg:text-3xl text-shadow-10">{{ $item->h2 }}</div>
