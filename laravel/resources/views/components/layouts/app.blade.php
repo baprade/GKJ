@@ -143,24 +143,136 @@
 
 <x-app.header-side/>
 <div class="relative flex flex-col w-full h-full overflow-auto" id="main-content-scroll">
-    {{-- Skeleton Shimmer Loading Placeholder during Livewire Navigation --}}
+    {{-- Context-Aware Skeleton Loading Variations during Livewire Navigation --}}
     <div id="page-skeleton-overlay">
-        <div class="flex flex-col w-full max-w-5xl gap-6 p-6 mx-auto sm:p-10">
-            {{-- Header Skeleton --}}
-            <div class="w-2/5 h-10 mb-2 skeleton-shimmer"></div>
-            {{-- Hero / Banner Skeleton --}}
-            <div class="w-full h-48 mb-4 skeleton-shimmer sm:h-64"></div>
-            {{-- Content Lines Skeleton --}}
-            <div class="space-y-3">
+        {{-- 1. Beranda (Home) Skeleton --}}
+        <div id="skeleton-home" class="skeleton-variant hidden flex flex-col w-full">
+            {{-- Hero Slider Skeleton --}}
+            <div class="w-full h-80 lg:h-[480px] skeleton-shimmer mb-8"></div>
+            {{-- About Section Skeleton --}}
+            <div class="max-w-5xl mx-auto w-full px-6 py-4 space-y-4">
+                <div class="w-1/3 h-8 skeleton-shimmer mx-auto mb-6"></div>
+                <div class="w-full h-4 skeleton-shimmer"></div>
+                <div class="w-5/6 h-4 skeleton-shimmer mx-auto"></div>
+                <div class="w-4/6 h-4 skeleton-shimmer mx-auto"></div>
+            </div>
+            {{-- Schedule Table Skeleton --}}
+            <div class="max-w-5xl mx-auto w-full px-6 py-8">
+                <div class="w-1/4 h-7 skeleton-shimmer mb-6"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="h-36 skeleton-shimmer"></div>
+                    <div class="h-36 skeleton-shimmer"></div>
+                </div>
+                <div class="h-48 w-full skeleton-shimmer"></div>
+            </div>
+        </div>
+
+        {{-- 2. Berita & Post Index (Grid Cards) Skeleton --}}
+        <div id="skeleton-list" class="skeleton-variant hidden flex flex-col w-full max-w-6xl gap-6 p-6 mx-auto sm:p-10">
+            <div class="w-48 h-9 skeleton-shimmer mb-2"></div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 2xl:grid-cols-3 sm:gap-10">
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="w-full h-48 skeleton-shimmer"></div>
+                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
+                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
+                </div>
+            </div>
+        </div>
+
+        {{-- 3. Formulir (Inputs Grid) Skeleton --}}
+        <div id="skeleton-form" class="skeleton-variant hidden flex flex-col w-full max-w-5xl gap-6 p-6 mx-auto sm:p-10">
+            <div class="flex flex-col gap-2 mb-4">
+                <div class="w-28 h-5 skeleton-shimmer"></div>
+                <div class="w-64 h-8 skeleton-shimmer"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <div class="w-24 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-32 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-28 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-36 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+                <div class="col-span-1 sm:col-span-2 space-y-2">
+                    <div class="w-32 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-24 skeleton-shimmer"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-28 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+                <div class="space-y-2">
+                    <div class="w-32 h-4 skeleton-shimmer"></div>
+                    <div class="w-full h-11 skeleton-shimmer"></div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-4">
+                <div class="w-32 h-11 skeleton-shimmer"></div>
+            </div>
+        </div>
+
+        {{-- 4. Detail / Tentang / Read Article Skeleton --}}
+        <div id="skeleton-detail" class="skeleton-variant hidden flex flex-col w-full max-w-4xl gap-6 p-6 mx-auto sm:p-10">
+            <div class="flex flex-col items-center gap-3 mb-4">
+                <div class="w-3/4 h-8 skeleton-shimmer"></div>
+                <div class="w-1/2 h-5 skeleton-shimmer"></div>
+            </div>
+            <div class="w-full aspect-video skeleton-shimmer mb-6"></div>
+            <div class="space-y-4">
+                <div class="w-full h-4 skeleton-shimmer"></div>
                 <div class="w-full h-4 skeleton-shimmer"></div>
                 <div class="w-5/6 h-4 skeleton-shimmer"></div>
+                <div class="w-full h-4 skeleton-shimmer"></div>
                 <div class="w-4/6 h-4 skeleton-shimmer"></div>
             </div>
-            {{-- Cards Grid Skeleton --}}
-            <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3">
-                <div class="w-full h-40 skeleton-shimmer"></div>
-                <div class="w-full h-40 skeleton-shimmer"></div>
-                <div class="w-full h-40 skeleton-shimmer"></div>
+        </div>
+
+        {{-- 5. Galeri (Photo/Video Masonry) Skeleton --}}
+        <div id="skeleton-gallery" class="skeleton-variant hidden flex flex-col w-full max-w-6xl gap-6 p-6 mx-auto sm:p-10">
+            <div class="w-44 h-8 skeleton-shimmer mb-2"></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
+                <div class="h-44 skeleton-shimmer"></div>
             </div>
         </div>
     </div>
@@ -174,9 +286,38 @@
     (function () {
         let progressInterval = null;
 
-        function startNavLoading() {
+        function detectSkeletonType(targetUrl) {
+            const url = (targetUrl || window.location.pathname).toLowerCase();
+            
+            if (url.includes('/form/')) return 'skeleton-form';
+            if (url.includes('/galeri/')) return 'skeleton-gallery';
+            if (url.includes('/berita') || url.includes('/tags/')) return 'skeleton-list';
+            if (url.includes('/tentang/') || url.includes('/post/')) return 'skeleton-detail';
+            if (url === '/' || url.endsWith('.com') || url.endsWith('.com/')) return 'skeleton-home';
+            
+            return 'skeleton-list';
+        }
+
+        function activateSkeleton(targetUrl) {
+            const type = detectSkeletonType(targetUrl);
+            
+            document.querySelectorAll('.skeleton-variant').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            });
+
+            const activeSkeleton = document.getElementById(type);
+            if (activeSkeleton) {
+                activeSkeleton.classList.remove('hidden');
+                activeSkeleton.classList.add('flex');
+            }
+        }
+
+        function startNavLoading(targetUrl) {
             const progressBar = document.getElementById('top-progress-bar');
             const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+
+            activateSkeleton(targetUrl);
 
             if (progressBar) {
                 progressBar.classList.add('active');
@@ -226,14 +367,19 @@
         }
 
         // Livewire 3 Navigation lifecycle events
-        document.addEventListener('livewire:navigating', startNavLoading);
+        document.addEventListener('livewire:navigating', () => {
+            startNavLoading(window.location.pathname);
+        });
         document.addEventListener('livewire:navigated', endNavLoading);
 
-        // Fallback for click on [wire\:navigate] links for instant feedback
+        // Instant click detection with target url routing
         document.addEventListener('click', (e) => {
             const link = e.target.closest('a[wire\\:navigate]');
-            if (link && link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) {
-                startNavLoading();
+            if (link) {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    startNavLoading(href);
+                }
             }
         });
     })();
