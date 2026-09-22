@@ -81,13 +81,88 @@
 </script>
 </head>
 <body class="flex flex-col h-full lg:flex-row">
-{{-- uk-scrollspy="target: .scrollspy; delay: 200;" --}}
-{{-- <div wire:loading class="flex items-center justify-center h-full"><span uk-spinner="ratio: 3"></span></div> --}}
+{{-- Top Progress Bar for Page Navigation --}}
+<div id="top-progress-bar"></div>
+
 <x-app.header-side/>
-<div class="flex flex-col w-full h-full overflow-auto">
-{{ $slot }}
-<div class="p-4 lg:hidden"><x-app.footer/></div>
+<div class="relative flex flex-col w-full h-full overflow-auto" id="main-content-scroll">
+    {{-- Skeleton Shimmer Loading Placeholder during Livewire Navigation --}}
+    <div id="page-skeleton-overlay">
+        <div class="flex flex-col gap-6 p-6 sm:p-10 max-w-5xl mx-auto w-full">
+            {{-- Header Skeleton --}}
+            <div class="skeleton-shimmer h-10 w-2/5 mb-4"></div>
+            {{-- Hero / Banner Skeleton --}}
+            <div class="skeleton-shimmer h-56 sm:h-72 w-full mb-6"></div>
+            {{-- Content Lines Skeleton --}}
+            <div class="space-y-3">
+                <div class="skeleton-shimmer h-4 w-full"></div>
+                <div class="skeleton-shimmer h-4 w-5/6"></div>
+                <div class="skeleton-shimmer h-4 w-4/6"></div>
+            </div>
+            {{-- Cards Grid Skeleton --}}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="skeleton-shimmer h-44 w-full"></div>
+                <div class="skeleton-shimmer h-44 w-full"></div>
+                <div class="skeleton-shimmer h-44 w-full"></div>
+            </div>
+        </div>
+    </div>
+
+    {{ $slot }}
+    <div class="p-4 lg:hidden"><x-app.footer/></div>
 </div>
 @vite('resources/js/app.js')
+
+<script>
+    (function () {
+        const progressBar = document.getElementById('top-progress-bar');
+        const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+        let progressInterval = null;
+
+        document.addEventListener('livewire:navigating', () => {
+            if (progressBar) {
+                progressBar.classList.add('active');
+                progressBar.style.width = '15%';
+                
+                let width = 15;
+                clearInterval(progressInterval);
+                progressInterval = setInterval(() => {
+                    if (width < 80) {
+                        width += Math.random() * 15;
+                        progressBar.style.width = width + '%';
+                    }
+                }, 100);
+            }
+
+            if (skeletonOverlay) {
+                skeletonOverlay.classList.add('visible');
+            }
+        });
+
+        document.addEventListener('livewire:navigated', () => {
+            if (progressBar) {
+                clearInterval(progressInterval);
+                progressBar.style.width = '100%';
+                setTimeout(() => {
+                    progressBar.style.opacity = '0';
+                    setTimeout(() => {
+                        progressBar.classList.remove('active');
+                        progressBar.style.width = '0%';
+                        progressBar.style.opacity = '';
+                    }, 300);
+                }, 200);
+            }
+
+            if (skeletonOverlay) {
+                skeletonOverlay.classList.remove('visible');
+            }
+
+            const mainScroll = document.getElementById('main-content-scroll');
+            if (mainScroll) {
+                mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    })();
+</script>
 </body>
 </html>
