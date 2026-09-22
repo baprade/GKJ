@@ -135,13 +135,14 @@
         <div class="px-6 py-3.5 bg-neutral-50 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-500">
             <div>Apabila terdapat penyesuaian waktu & tempat ibadah, akan dicantumkan dalam warta jemaat.</div>
             <div class="flex items-center gap-3 self-end sm:self-auto shrink-0">
-                <a href="{{ url('galeri-foto/104/jadwal-ibadah') }}" wire:navigate class="hover:text-neutral-900 underline underline-offset-2">
-                    Poster Warta
+                <a href="{{ url('galeri-foto/104/jadwal-ibadah') }}" wire:navigate class="hover:text-neutral-900 inline-flex items-center gap-1.5 underline underline-offset-2">
+                    <i class="fa-regular fa-image text-[11px] text-neutral-400"></i>
+                    <span>Poster Jadwal Ibadah</span>
                 </a>
                 <span>&bull;</span>
-                <a href="https://maps.google.com/?q=GKJ+Wonogiri" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 inline-flex items-center gap-1">
-                    <span>Google Maps</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <a href="https://maps.google.com/?q=GKJ+Wonogiri" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-[11px] text-neutral-400"></i>
+                    <span>Petunjuk Lokasi (Maps)</span>
                 </a>
             </div>
         </div>
