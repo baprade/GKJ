@@ -7,195 +7,144 @@
     $namaBulan = \Carbon\Carbon::now()->translatedFormat('F Y');
 @endphp
 
-<section id="schedule" class="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="bg-white border border-neutral-200/90 rounded-2xl shadow-sm overflow-hidden">
-        <!-- Header Section -->
-        <div class="px-6 py-7 sm:px-8 bg-neutral-50/80 border-b border-neutral-200/70 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<section id="schedule" class="w-full px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="bg-white border border-neutral-200 rounded-xl shadow-xs overflow-hidden">
+        
+        <!-- Header -->
+        <div class="px-6 py-5 border-b border-neutral-200 bg-neutral-50/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-                <div class="flex items-center gap-2 text-xs font-semibold tracking-wider text-amber-900 uppercase">
-                    <i class="fa-solid fa-cross text-[11px] text-amber-800"></i>
-                    <span>Liturgi & Ibadah Jemaat</span>
-                </div>
-                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 cinzel mt-1">Jadwal Ibadah GKJ Wonogiri</h2>
-                <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">Waktu pelaksanaan ibadah rutin di Gedung Induk dan Pepanthan.</p>
+                <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 cinzel">Jadwal Ibadah Hari Minggu</h2>
+                <p class="text-xs text-neutral-500 mt-0.5">Gedung Induk & Pepanthan GKJ Wonogiri</p>
             </div>
-            <div class="flex items-center gap-2.5">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white border border-neutral-200 rounded-full text-xs font-medium text-neutral-700 shadow-2xs">
-                    <i class="fa-regular fa-calendar text-neutral-500"></i>
-                    <span>Periode {{ $namaBulan }} &bull; <strong class="text-neutral-900">Bulan {{ $isBulanGenap ? 'Genap' : 'Ganjil' }}</strong></span>
-                </div>
+            <div class="inline-flex items-center gap-2 self-start sm:self-auto px-3 py-1 bg-white border border-neutral-200 rounded-full text-xs font-medium text-neutral-700">
+                <i class="fa-regular fa-calendar text-neutral-400"></i>
+                <span>{{ $namaBulan }} &bull; <strong class="text-amber-900">Bulan {{ $isBulanGenap ? 'Genap' : 'Ganjil' }}</strong></span>
             </div>
         </div>
 
-        <!-- Body Grid -->
-        <div class="p-6 sm:p-8 grid gap-6 lg:grid-cols-12">
-            <!-- Kolom Induk (5 cols) -->
-            <div class="lg:col-span-5 flex flex-col gap-4">
-                <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-lg bg-amber-900/10 text-amber-900 border border-amber-800/20 flex items-center justify-center text-base shrink-0 shadow-xs">
-                            <i class="fa-solid fa-church"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral-900 text-base leading-tight">Gedung Induk</h3>
-                            <span class="text-xs text-neutral-500">Pusat GKJ Wonogiri</span>
-                        </div>
+        <!-- Tabel Ibadah Gedung Induk -->
+        <div class="p-6">
+            <div class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-church text-neutral-700"></i>
+                <span>Gedung Induk (Jl. Murtipranoto No. 92)</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- Ibadah Pagi -->
+                <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-2xl font-bold text-neutral-900 cinzel">07.00</span>
+                        <span class="text-xs text-neutral-500 font-mono">WIB</span>
+                        <span class="text-sm font-semibold text-neutral-800 ml-1">Ibadah Pagi</span>
                     </div>
-                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 text-neutral-700 rounded-md border border-neutral-200">Setiap Minggu</span>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded bg-white border border-neutral-200 text-neutral-800 shadow-2xs">
+                        {{ $indukPagiLang }}
+                    </span>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
-                    <!-- Ibadah Pagi -->
-                    <div class="p-4 rounded-xl border border-neutral-200/90 bg-linear-to-br from-white to-neutral-50/50 hover:border-neutral-300 transition flex items-center justify-between">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-amber-50 border border-amber-200/60 text-amber-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
-                                <i class="fa-regular fa-sun"></i>
-                            </div>
-                            <div>
-                                <div class="text-[11px] font-medium text-neutral-500 uppercase tracking-wide">Ibadah Pagi</div>
-                                <div class="text-2xl font-bold text-neutral-900 cinzel leading-none mt-1">07.00 <span class="text-xs font-normal text-neutral-500">WIB</span></div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="inline-block text-xs font-medium px-2.5 py-1 rounded-md {{ $isBulanGenap ? 'bg-amber-50 text-amber-800 border border-amber-200/70' : 'bg-neutral-100 text-neutral-800 border border-neutral-200' }}">
-                                {{ $indukPagiLang }}
-                            </span>
-                        </div>
+                <!-- Ibadah Sore -->
+                <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 border border-neutral-200">
+                    <div class="flex items-baseline gap-3">
+                        <span class="text-2xl font-bold text-neutral-900 cinzel">16.30</span>
+                        <span class="text-xs text-neutral-500 font-mono">WIB</span>
+                        <span class="text-sm font-semibold text-neutral-800 ml-1">Ibadah Sore</span>
                     </div>
-
-                    <!-- Ibadah Sore -->
-                    <div class="p-4 rounded-xl border border-neutral-200/90 bg-linear-to-br from-white to-neutral-50/50 hover:border-neutral-300 transition flex items-center justify-between">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-indigo-50 border border-indigo-200/60 text-indigo-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
-                                <i class="fa-regular fa-moon"></i>
-                            </div>
-                            <div>
-                                <div class="text-[11px] font-medium text-neutral-500 uppercase tracking-wide">Ibadah Sore</div>
-                                <div class="text-2xl font-bold text-neutral-900 cinzel leading-none mt-1">16.30 <span class="text-xs font-normal text-neutral-500">WIB</span></div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="inline-block text-xs font-medium px-2.5 py-1 rounded-md {{ !$isBulanGenap ? 'bg-amber-50 text-amber-800 border border-amber-200/70' : 'bg-neutral-100 text-neutral-800 border border-neutral-200' }}">
-                                {{ $indukSoreLang }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-[11px] text-neutral-500 bg-neutral-50 p-3 rounded-lg border border-neutral-200/70 flex items-start gap-2 leading-relaxed">
-                    <i class="fa-solid fa-circle-info text-neutral-400 mt-0.5"></i>
-                    <span><strong>Ketentuan Bahasa:</strong> Bulan Genap (Pagi: Jawa, Sore: Indonesia) dan Bulan Ganjil (Pagi: Indonesia, Sore: Jawa).</span>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded bg-white border border-neutral-200 text-neutral-800 shadow-2xs">
+                        {{ $indukSoreLang }}
+                    </span>
                 </div>
             </div>
 
-            <!-- Kolom Pepanthan (7 cols) -->
-            <div class="lg:col-span-7 flex flex-col gap-4">
-                <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-lg bg-sky-900/10 text-sky-900 border border-sky-800/20 flex items-center justify-center text-base shrink-0 shadow-xs">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral-900 text-base leading-tight">Wilayah Pepanthan</h3>
-                            <span class="text-xs text-neutral-500">Cabang Persekutuan</span>
-                        </div>
-                    </div>
-                    <span class="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 text-neutral-600 rounded-md border border-neutral-200">4 Lokasi</span>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <!-- Pokoh Kidul -->
-                    <div class="p-3.5 rounded-xl border border-neutral-200/90 bg-white flex flex-col justify-between hover:border-neutral-300 transition">
-                        <div>
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-neutral-900">Pept. Pokoh Kidul</span>
-                                <span class="text-[10px] text-neutral-400 font-mono">08.00 WIB</span>
-                            </div>
-                            <div class="text-xl font-bold text-neutral-900 cinzel my-1">08.00 <span class="text-[11px] font-normal text-neutral-500">WIB</span></div>
-                        </div>
-                        <div class="pt-2 border-t border-neutral-100 mt-2 flex items-center justify-between text-xs">
-                            <span class="text-neutral-500 text-[11px]">Bahasa:</span>
-                            <span class="font-medium text-neutral-800 px-2 py-0.5 bg-neutral-50 rounded border border-neutral-200 text-[11px]">
-                                {{ $pokohLang }}
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Timang -->
-                    <div class="p-3.5 rounded-xl border border-neutral-200/90 bg-white flex flex-col justify-between hover:border-neutral-300 transition">
-                        <div>
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-neutral-900">Pept. Timang</span>
-                                <span class="text-[10px] text-neutral-400 font-mono">07.00 WIB</span>
-                            </div>
-                            <div class="text-xl font-bold text-neutral-900 cinzel my-1">07.00 <span class="text-[11px] font-normal text-neutral-500">WIB</span></div>
-                        </div>
-                        <div class="pt-2 border-t border-neutral-100 mt-2 flex items-center justify-between text-xs">
-                            <span class="text-neutral-500 text-[11px]">Minggu ke-2 & 4:</span>
-                            <span class="font-medium text-neutral-800 px-2 py-0.5 bg-neutral-50 rounded border border-neutral-200 text-[11px]">
-                                Bhs. Indonesia
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Mento -->
-                    <div class="p-3.5 rounded-xl border border-neutral-200/90 bg-white flex flex-col justify-between hover:border-neutral-300 transition">
-                        <div>
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-neutral-900">Pept. Mento</span>
-                                <span class="text-[10px] text-neutral-400 font-mono">07.00 WIB</span>
-                            </div>
-                            <div class="text-xl font-bold text-neutral-900 cinzel my-1">07.00 <span class="text-[11px] font-normal text-neutral-500">WIB</span></div>
-                        </div>
-                        <div class="pt-2 border-t border-neutral-100 mt-2 flex items-center justify-between text-xs">
-                            <span class="text-neutral-500 text-[11px]">Bahasa:</span>
-                            <span class="font-medium text-neutral-800 px-2 py-0.5 bg-neutral-50 rounded border border-neutral-200 text-[11px]">
-                                Bahasa Jawa
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Jatisobo -->
-                    <div class="p-3.5 rounded-xl border border-neutral-200/90 bg-white flex flex-col justify-between hover:border-neutral-300 transition">
-                        <div>
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="font-bold text-neutral-900">Pept. Jatisobo</span>
-                                <span class="text-[10px] text-neutral-400 font-mono">07.00 WIB</span>
-                            </div>
-                            <div class="text-xl font-bold text-neutral-900 cinzel my-1">07.00 <span class="text-[11px] font-normal text-neutral-500">WIB</span></div>
-                        </div>
-                        <div class="pt-2 border-t border-neutral-100 mt-2 flex items-center justify-between text-xs">
-                            <span class="text-neutral-500 text-[11px]">Minggu Terakhir:</span>
-                            <span class="font-medium text-neutral-800 px-2 py-0.5 bg-neutral-50 rounded border border-neutral-200 text-[11px]">
-                                Bhs. Indonesia
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-[11px] text-neutral-500 bg-neutral-50 p-3 rounded-lg border border-neutral-200/70 flex items-start gap-2 leading-relaxed">
-                    <i class="fa-solid fa-clock-rotate-left text-neutral-400 mt-0.5"></i>
-                    <span>* Pokoh Kidul bergantian tiap bulan (Genap: Indonesia, Ganjil: Jawa). Timang & Jatisobo berjadwal khusus.</span>
-                </div>
+            <div class="text-[11px] text-neutral-500 mt-2.5 flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-info text-neutral-400"></i>
+                <span>Ketentuan bahasa Induk: Bulan Genap (Pagi Jawa, Sore Indonesia) &bull; Bulan Ganjil (Pagi Indonesia, Sore Jawa).</span>
             </div>
         </div>
 
-        <!-- Footer / Action bar -->
-        <div class="px-6 py-4 sm:px-8 bg-neutral-50 border-t border-neutral-200/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <div class="text-neutral-500 flex items-center gap-2">
-                <i class="fa-solid fa-bell text-neutral-400"></i>
-                <span>Apabila terdapat penyesuaian waktu & tempat ibadah, akan dicantumkan dalam warta jemaat.</span>
+        <!-- Tabel Wilayah Pepanthan -->
+        <div class="px-6 pb-6 pt-2 border-t border-neutral-100">
+            <div class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3 mt-4 flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-neutral-700"></i>
+                <span>Wilayah Pepanthan (Cabang)</span>
             </div>
-            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-                <a href="{{ url('galeri-foto/104/jadwal-ibadah') }}" wire:navigate class="inline-flex items-center gap-2 px-3.5 py-1.5 font-medium text-white bg-neutral-900 hover:bg-neutral-800 rounded-lg transition text-xs shadow-2xs">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Poster Warta</span>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-neutral-200 text-[11px] font-bold text-neutral-400 uppercase">
+                            <th class="py-2 font-semibold">Tempat / Pepanthan</th>
+                            <th class="py-2 font-semibold">Waktu</th>
+                            <th class="py-2 font-semibold">Bahasa Pengantar</th>
+                            <th class="py-2 font-semibold text-right">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-100 text-neutral-800">
+                        <!-- Pokoh Kidul -->
+                        <tr class="hover:bg-neutral-50/60 transition">
+                            <td class="py-3 font-semibold text-neutral-900">Pept. Pokoh Kidul</td>
+                            <td class="py-3 font-mono font-bold cinzel text-base text-neutral-900">08.00 <span class="text-xs font-normal text-neutral-500 font-sans">WIB</span></td>
+                            <td class="py-3">
+                                <span class="inline-block text-xs font-medium px-2 py-0.5 rounded bg-neutral-100 text-neutral-800 border border-neutral-200">
+                                    {{ $pokohLang }}
+                                </span>
+                            </td>
+                            <td class="py-3 text-xs text-neutral-500 text-right">Bulan Genap (Indonesia), Bulan Ganjil (Jawa)</td>
+                        </tr>
+
+                        <!-- Timang -->
+                        <tr class="hover:bg-neutral-50/60 transition">
+                            <td class="py-3 font-semibold text-neutral-900">Pept. Timang</td>
+                            <td class="py-3 font-mono font-bold cinzel text-base text-neutral-900">07.00 <span class="text-xs font-normal text-neutral-500 font-sans">WIB</span></td>
+                            <td class="py-3">
+                                <span class="inline-block text-xs font-medium px-2 py-0.5 rounded bg-neutral-100 text-neutral-800 border border-neutral-200">
+                                    Bahasa Indonesia
+                                </span>
+                            </td>
+                            <td class="py-3 text-xs text-neutral-500 text-right">Ibadah setiap Minggu ke-2 & ke-4</td>
+                        </tr>
+
+                        <!-- Mento -->
+                        <tr class="hover:bg-neutral-50/60 transition">
+                            <td class="py-3 font-semibold text-neutral-900">Pept. Mento</td>
+                            <td class="py-3 font-mono font-bold cinzel text-base text-neutral-900">07.00 <span class="text-xs font-normal text-neutral-500 font-sans">WIB</span></td>
+                            <td class="py-3">
+                                <span class="inline-block text-xs font-medium px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200/60">
+                                    Bahasa Jawa
+                                </span>
+                            </td>
+                            <td class="py-3 text-xs text-neutral-500 text-right">Ibadah setiap Minggu</td>
+                        </tr>
+
+                        <!-- Jatisobo -->
+                        <tr class="hover:bg-neutral-50/60 transition">
+                            <td class="py-3 font-semibold text-neutral-900">Pept. Jatisobo</td>
+                            <td class="py-3 font-mono font-bold cinzel text-base text-neutral-900">07.00 <span class="text-xs font-normal text-neutral-500 font-sans">WIB</span></td>
+                            <td class="py-3">
+                                <span class="inline-block text-xs font-medium px-2 py-0.5 rounded bg-neutral-100 text-neutral-800 border border-neutral-200">
+                                    Bahasa Indonesia
+                                </span>
+                            </td>
+                            <td class="py-3 text-xs text-neutral-500 text-right">Ibadah setiap Minggu Terakhir</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Notice & Links -->
+        <div class="px-6 py-3.5 bg-neutral-50 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-500">
+            <div>Apabila terdapat penyesuaian waktu & tempat ibadah, akan dicantumkan dalam warta jemaat.</div>
+            <div class="flex items-center gap-3 self-end sm:self-auto shrink-0">
+                <a href="{{ url('galeri-foto/104/jadwal-ibadah') }}" wire:navigate class="hover:text-neutral-900 underline underline-offset-2">
+                    Poster Warta
                 </a>
-                <a href="https://maps.google.com/?q=GKJ+Wonogiri" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 font-medium text-neutral-700 bg-white border border-neutral-300 hover:bg-neutral-100 rounded-lg transition text-xs shadow-2xs">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-neutral-500"></i>
-                    <span>Peta Lokasi</span>
+                <span>&bull;</span>
+                <a href="https://maps.google.com/?q=GKJ+Wonogiri" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-900 inline-flex items-center gap-1">
+                    <span>Google Maps</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
             </div>
         </div>
+
     </div>
 </section>
