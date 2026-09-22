@@ -79,6 +79,63 @@
   ]
 }
 </script>
+<style>
+/* --- Sleek Navigation Progress Bar (Anti-UI Slop) --- */
+#top-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #1e293b 0%, #d97706 50%, #f59e0b 100%);
+    z-index: 999999;
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.8);
+    pointer-events: none;
+    transition: width 0.2s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+#top-progress-bar.active {
+    opacity: 1 !important;
+}
+
+/* --- Skeleton Shimmer Loading Overlay --- */
+#page-skeleton-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    pointer-events: none;
+}
+
+#page-skeleton-overlay.visible {
+    display: block !important;
+}
+
+@keyframes pulse-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: pulse-shimmer 1.4s infinite ease-in-out;
+    border-radius: 6px;
+}
+</style>
 </head>
 <body class="flex flex-col h-full lg:flex-row">
 {{-- Top Progress Bar for Page Navigation --}}
@@ -88,22 +145,22 @@
 <div class="relative flex flex-col w-full h-full overflow-auto" id="main-content-scroll">
     {{-- Skeleton Shimmer Loading Placeholder during Livewire Navigation --}}
     <div id="page-skeleton-overlay">
-        <div class="flex flex-col gap-6 p-6 sm:p-10 max-w-5xl mx-auto w-full">
+        <div class="flex flex-col w-full max-w-5xl gap-6 p-6 mx-auto sm:p-10">
             {{-- Header Skeleton --}}
-            <div class="skeleton-shimmer h-10 w-2/5 mb-4"></div>
+            <div class="w-2/5 h-10 mb-2 skeleton-shimmer"></div>
             {{-- Hero / Banner Skeleton --}}
-            <div class="skeleton-shimmer h-56 sm:h-72 w-full mb-6"></div>
+            <div class="w-full h-48 mb-4 skeleton-shimmer sm:h-64"></div>
             {{-- Content Lines Skeleton --}}
             <div class="space-y-3">
-                <div class="skeleton-shimmer h-4 w-full"></div>
-                <div class="skeleton-shimmer h-4 w-5/6"></div>
-                <div class="skeleton-shimmer h-4 w-4/6"></div>
+                <div class="w-full h-4 skeleton-shimmer"></div>
+                <div class="w-5/6 h-4 skeleton-shimmer"></div>
+                <div class="w-4/6 h-4 skeleton-shimmer"></div>
             </div>
             {{-- Cards Grid Skeleton --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                <div class="skeleton-shimmer h-44 w-full"></div>
-                <div class="skeleton-shimmer h-44 w-full"></div>
-                <div class="skeleton-shimmer h-44 w-full"></div>
+            <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="w-full h-40 skeleton-shimmer"></div>
+                <div class="w-full h-40 skeleton-shimmer"></div>
+                <div class="w-full h-40 skeleton-shimmer"></div>
             </div>
         </div>
     </div>
@@ -115,20 +172,22 @@
 
 <script>
     (function () {
-        const progressBar = document.getElementById('top-progress-bar');
-        const skeletonOverlay = document.getElementById('page-skeleton-overlay');
         let progressInterval = null;
 
-        document.addEventListener('livewire:navigating', () => {
+        function startNavLoading() {
+            const progressBar = document.getElementById('top-progress-bar');
+            const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+
             if (progressBar) {
                 progressBar.classList.add('active');
-                progressBar.style.width = '15%';
-                
-                let width = 15;
+                progressBar.style.opacity = '1';
+                progressBar.style.width = '25%';
+
+                let width = 25;
                 clearInterval(progressInterval);
                 progressInterval = setInterval(() => {
-                    if (width < 80) {
-                        width += Math.random() * 15;
+                    if (width < 85) {
+                        width += Math.random() * 12;
                         progressBar.style.width = width + '%';
                     }
                 }, 100);
@@ -137,9 +196,12 @@
             if (skeletonOverlay) {
                 skeletonOverlay.classList.add('visible');
             }
-        });
+        }
 
-        document.addEventListener('livewire:navigated', () => {
+        function endNavLoading() {
+            const progressBar = document.getElementById('top-progress-bar');
+            const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+
             if (progressBar) {
                 clearInterval(progressInterval);
                 progressBar.style.width = '100%';
@@ -149,8 +211,8 @@
                         progressBar.classList.remove('active');
                         progressBar.style.width = '0%';
                         progressBar.style.opacity = '';
-                    }, 300);
-                }, 200);
+                    }, 250);
+                }, 150);
             }
 
             if (skeletonOverlay) {
@@ -160,6 +222,18 @@
             const mainScroll = document.getElementById('main-content-scroll');
             if (mainScroll) {
                 mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Livewire 3 Navigation lifecycle events
+        document.addEventListener('livewire:navigating', startNavLoading);
+        document.addEventListener('livewire:navigated', endNavLoading);
+
+        // Fallback for click on [wire\:navigate] links for instant feedback
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[wire\\:navigate]');
+            if (link && link.getAttribute('href') && !link.getAttribute('href').startsWith('#')) {
+                startNavLoading();
             }
         });
     })();
