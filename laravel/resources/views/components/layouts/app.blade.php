@@ -29,6 +29,9 @@
 <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 @vite('resources/css/app.css')
+<script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('js/uikit.min.js') }}"></script>
+<script src="{{ asset('js/uikit-icons.min.js') }}"></script>
 
 <script type="application/ld+json">
 {
@@ -443,25 +446,24 @@
         // Dismiss Initial Page Splash Loader smoothly
         function dismissInitialLoader() {
             const initialLoader = document.getElementById('app-initial-loader');
-            if (initialLoader && !initialLoader.classList.contains('loaded')) {
+            if (initialLoader) {
                 initialLoader.classList.add('loaded');
                 setTimeout(() => {
                     initialLoader.style.display = 'none';
-                }, 450);
+                }, 400);
             }
         }
 
         // Trigger loader dismissal on DOM ready / full window load / Livewire initialization
-        if (document.readyState === 'complete') {
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
             dismissInitialLoader();
         } else {
             window.addEventListener('load', dismissInitialLoader);
-            document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(dismissInitialLoader, 250);
-            });
+            document.addEventListener('DOMContentLoaded', dismissInitialLoader);
         }
         document.addEventListener('livewire:initialized', dismissInitialLoader);
-        setTimeout(dismissInitialLoader, 2000); // Safety fallback
+        document.addEventListener('livewire:navigated', dismissInitialLoader);
+        setTimeout(dismissInitialLoader, 800); // Bulletproof safety fallback
 
         // Livewire 3 Navigation lifecycle events
         document.addEventListener('livewire:navigating', () => {
@@ -481,8 +483,5 @@
         });
     })();
 </script>
-<script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
-<script src="{{ asset('js/uikit.min.js') }}" defer></script>
-<script src="{{ asset('js/uikit-icons.min.js') }}" defer></script>
 </body>
 </html>
