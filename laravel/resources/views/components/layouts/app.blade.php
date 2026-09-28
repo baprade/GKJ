@@ -316,8 +316,13 @@
         function startNavLoading(targetUrl) {
             const progressBar = document.getElementById('top-progress-bar');
             const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+            const brandLogo = document.getElementById('header-brand-logo');
 
             activateSkeleton(targetUrl);
+
+            if (brandLogo) {
+                brandLogo.classList.add('logo-nav-pulse');
+            }
 
             if (progressBar) {
                 progressBar.classList.add('active');
@@ -342,6 +347,11 @@
         function endNavLoading() {
             const progressBar = document.getElementById('top-progress-bar');
             const skeletonOverlay = document.getElementById('page-skeleton-overlay');
+            const brandLogo = document.getElementById('header-brand-logo');
+
+            if (brandLogo) {
+                brandLogo.classList.remove('logo-nav-pulse');
+            }
 
             if (progressBar) {
                 clearInterval(progressInterval);

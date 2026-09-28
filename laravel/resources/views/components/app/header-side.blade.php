@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between lg:flex-col lg:h-full">
         <div>
             <a class="flex items-center gap-2 text-black lg:gap-4 hover:text-black" wire:navigate href="{{ route('home') }}">
-                <img class="h-10 lg:h-14" src="{{ route('images', config('app.logo')) }}" alt="{{ config('app.name') }}">
+                <img id="header-brand-logo" class="h-10 lg:h-14 transition-all duration-300" src="{{ route('images', config('app.logo')) }}" alt="{{ config('app.name') }}">
                 <span class="text-xl font-semibold cinzel">{{ config('app.name') }}</span>
             </a>
 
