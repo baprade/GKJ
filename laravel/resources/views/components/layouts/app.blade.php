@@ -214,132 +214,53 @@
     <div id="page-skeleton-overlay">
         {{-- 1. Beranda (Home) Skeleton --}}
         <div id="skeleton-home" class="skeleton-variant hidden flex flex-col w-full">
-            {{-- Hero Slider Skeleton --}}
-            <div class="w-full h-80 lg:h-[480px] skeleton-shimmer mb-8"></div>
-            {{-- About Section Skeleton --}}
-            <div class="max-w-5xl mx-auto w-full px-6 py-4 space-y-4">
-                <div class="w-1/3 h-8 skeleton-shimmer mx-auto mb-6"></div>
-                <div class="w-full h-4 skeleton-shimmer"></div>
-                <div class="w-5/6 h-4 skeleton-shimmer mx-auto"></div>
-                <div class="w-4/6 h-4 skeleton-shimmer mx-auto"></div>
+            <div class="w-full h-72 sm:h-96 lg:h-[460px] skeleton-shimmer mb-6"></div>
+            <div class="max-w-4xl mx-auto w-full px-6 py-4 space-y-3">
+                <div class="w-1/3 h-7 skeleton-shimmer mx-auto mb-4"></div>
+                <div class="w-full h-3.5 skeleton-shimmer"></div>
+                <div class="w-4/5 h-3.5 skeleton-shimmer mx-auto"></div>
             </div>
-            {{-- Schedule Table Skeleton --}}
-            <div class="max-w-5xl mx-auto w-full px-6 py-8">
-                <div class="w-1/4 h-7 skeleton-shimmer mb-6"></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="h-36 skeleton-shimmer"></div>
-                    <div class="h-36 skeleton-shimmer"></div>
+            <div class="max-w-4xl mx-auto w-full px-6 py-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="h-28 skeleton-shimmer"></div>
+                    <div class="h-28 skeleton-shimmer"></div>
                 </div>
-                <div class="h-48 w-full skeleton-shimmer"></div>
             </div>
         </div>
 
         {{-- 2. Berita & Post Index (Grid Cards) Skeleton --}}
-        <div id="skeleton-list" class="skeleton-variant hidden flex flex-col w-full max-w-6xl gap-6 p-6 mx-auto sm:p-10">
-            <div class="w-48 h-9 skeleton-shimmer mb-2"></div>
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 2xl:grid-cols-3 sm:gap-10">
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <div class="w-full h-48 skeleton-shimmer"></div>
-                    <div class="w-3/4 h-5 skeleton-shimmer"></div>
-                    <div class="w-1/2 h-4 skeleton-shimmer"></div>
-                </div>
+        <div id="skeleton-list" class="skeleton-variant hidden flex flex-col w-full max-w-5xl gap-4 p-6 mx-auto sm:p-8">
+            <div class="w-40 h-8 skeleton-shimmer mb-2"></div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="flex flex-col gap-2.5"><div class="w-full h-44 skeleton-shimmer"></div><div class="w-3/4 h-4 skeleton-shimmer"></div><div class="w-1/2 h-3 skeleton-shimmer"></div></div>
+                <div class="flex flex-col gap-2.5"><div class="w-full h-44 skeleton-shimmer"></div><div class="w-3/4 h-4 skeleton-shimmer"></div><div class="w-1/2 h-3 skeleton-shimmer"></div></div>
+                <div class="flex flex-col gap-2.5"><div class="w-full h-44 skeleton-shimmer"></div><div class="w-3/4 h-4 skeleton-shimmer"></div><div class="w-1/2 h-3 skeleton-shimmer"></div></div>
             </div>
         </div>
 
         {{-- 3. Formulir (Inputs Grid) Skeleton --}}
-        <div id="skeleton-form" class="skeleton-variant hidden flex flex-col w-full max-w-5xl gap-6 p-6 mx-auto sm:p-10">
-            <div class="flex flex-col gap-2 mb-4">
-                <div class="w-28 h-5 skeleton-shimmer"></div>
-                <div class="w-64 h-8 skeleton-shimmer"></div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                    <div class="w-24 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-                <div class="space-y-2">
-                    <div class="w-32 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-                <div class="space-y-2">
-                    <div class="w-28 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-                <div class="space-y-2">
-                    <div class="w-36 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-                <div class="col-span-1 sm:col-span-2 space-y-2">
-                    <div class="w-32 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-24 skeleton-shimmer"></div>
-                </div>
-                <div class="space-y-2">
-                    <div class="w-28 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-                <div class="space-y-2">
-                    <div class="w-32 h-4 skeleton-shimmer"></div>
-                    <div class="w-full h-11 skeleton-shimmer"></div>
-                </div>
-            </div>
-            <div class="flex justify-end mt-4">
-                <div class="w-32 h-11 skeleton-shimmer"></div>
+        <div id="skeleton-form" class="skeleton-variant hidden flex flex-col w-full max-w-4xl gap-4 p-6 mx-auto sm:p-8">
+            <div class="w-48 h-7 skeleton-shimmer mb-2"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1.5"><div class="w-24 h-3 skeleton-shimmer"></div><div class="w-full h-10 skeleton-shimmer"></div></div>
+                <div class="space-y-1.5"><div class="w-32 h-3 skeleton-shimmer"></div><div class="w-full h-10 skeleton-shimmer"></div></div>
+                <div class="space-y-1.5"><div class="w-28 h-3 skeleton-shimmer"></div><div class="w-full h-10 skeleton-shimmer"></div></div>
+                <div class="space-y-1.5"><div class="w-36 h-3 skeleton-shimmer"></div><div class="w-full h-10 skeleton-shimmer"></div></div>
             </div>
         </div>
 
-        {{-- 4. Detail / Tentang / Read Article Skeleton --}}
-        <div id="skeleton-detail" class="skeleton-variant hidden flex flex-col w-full max-w-4xl gap-6 p-6 mx-auto sm:p-10">
-            <div class="flex flex-col items-center gap-3 mb-4">
-                <div class="w-3/4 h-8 skeleton-shimmer"></div>
-                <div class="w-1/2 h-5 skeleton-shimmer"></div>
-            </div>
-            <div class="w-full aspect-video skeleton-shimmer mb-6"></div>
-            <div class="space-y-4">
-                <div class="w-full h-4 skeleton-shimmer"></div>
-                <div class="w-full h-4 skeleton-shimmer"></div>
-                <div class="w-5/6 h-4 skeleton-shimmer"></div>
-                <div class="w-full h-4 skeleton-shimmer"></div>
-                <div class="w-4/6 h-4 skeleton-shimmer"></div>
-            </div>
+        {{-- 4. Detail / Tentang Skeleton --}}
+        <div id="skeleton-detail" class="skeleton-variant hidden flex flex-col w-full max-w-3xl gap-4 p-6 mx-auto sm:p-8">
+            <div class="w-2/3 h-7 skeleton-shimmer mx-auto mb-2"></div>
+            <div class="w-full aspect-video skeleton-shimmer mb-4"></div>
+            <div class="space-y-2.5"><div class="w-full h-3.5 skeleton-shimmer"></div><div class="w-full h-3.5 skeleton-shimmer"></div><div class="w-3/4 h-3.5 skeleton-shimmer"></div></div>
         </div>
 
-        {{-- 5. Galeri (Photo/Video Masonry) Skeleton --}}
-        <div id="skeleton-gallery" class="skeleton-variant hidden flex flex-col w-full max-w-6xl gap-6 p-6 mx-auto sm:p-10">
-            <div class="w-44 h-8 skeleton-shimmer mb-2"></div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
-                <div class="h-44 skeleton-shimmer"></div>
+        {{-- 5. Galeri Skeleton --}}
+        <div id="skeleton-gallery" class="skeleton-variant hidden flex flex-col w-full max-w-5xl gap-4 p-6 mx-auto sm:p-8">
+            <div class="w-36 h-7 skeleton-shimmer mb-2"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                <div class="h-36 skeleton-shimmer"></div><div class="h-36 skeleton-shimmer"></div><div class="h-36 skeleton-shimmer"></div><div class="h-36 skeleton-shimmer"></div>
             </div>
         </div>
     </div>
