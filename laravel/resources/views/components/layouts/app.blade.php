@@ -28,9 +28,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-<script src="{{ asset('js/uikit.min.js') }}"></script>
-<script src="{{ asset('js/uikit-icons.min.js') }}"></script>
-<script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
 @vite('resources/css/app.css')
 
 <script type="application/ld+json">
@@ -484,5 +481,8 @@
         });
     })();
 </script>
+<script src="{{ asset('js/jquery-3.7.1.min.js') }}" defer></script>
+<script src="{{ asset('js/uikit.min.js') }}" defer></script>
+<script src="{{ asset('js/uikit-icons.min.js') }}" defer></script>
 </body>
 </html>
