@@ -135,9 +135,76 @@
     animation: pulse-shimmer 1.4s infinite ease-in-out;
     border-radius: 6px;
 }
+
+/* --- Initial Splash Page Loading Screen --- */
+#app-initial-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+#app-initial-loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes gkj-logo-breathe {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(217, 119, 6, 0));
+        opacity: 0.95;
+    }
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 16px rgba(217, 119, 6, 0.65));
+        opacity: 1;
+    }
+}
+
+.gkj-splash-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    animation: gkj-logo-breathe 1.8s infinite ease-in-out;
+}
+
+.gkj-splash-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2.5px solid #f1f5f9;
+    border-top: 2.5px solid #d97706;
+    border-radius: 50%;
+    animation: gkj-spin 0.75s linear infinite;
+}
+
+@keyframes gkj-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body class="flex flex-col h-full lg:flex-row">
+{{-- Initial Full Page Loading Splash Screen --}}
+<div id="app-initial-loader">
+    <img class="gkj-splash-logo" src="{{ route('images', config('app.logo')) }}" alt="{{ config('app.name') }}">
+    <div class="flex flex-col items-center gap-2">
+        <div class="gkj-splash-spinner"></div>
+        <span class="text-xs font-semibold text-neutral-600 tracking-wider uppercase cinzel">{{ config('app.name') }}</span>
+    </div>
+</div>
+
 {{-- Top Progress Bar for Page Navigation --}}
 <div id="top-progress-bar"></div>
 
@@ -375,6 +442,29 @@
                 mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
+
+        // Dismiss Initial Page Splash Loader smoothly
+        function dismissInitialLoader() {
+            const initialLoader = document.getElementById('app-initial-loader');
+            if (initialLoader && !initialLoader.classList.contains('loaded')) {
+                initialLoader.classList.add('loaded');
+                setTimeout(() => {
+                    initialLoader.style.display = 'none';
+                }, 450);
+            }
+        }
+
+        // Trigger loader dismissal on DOM ready / full window load / Livewire initialization
+        if (document.readyState === 'complete') {
+            dismissInitialLoader();
+        } else {
+            window.addEventListener('load', dismissInitialLoader);
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(dismissInitialLoader, 250);
+            });
+        }
+        document.addEventListener('livewire:initialized', dismissInitialLoader);
+        setTimeout(dismissInitialLoader, 2000); // Safety fallback
 
         // Livewire 3 Navigation lifecycle events
         document.addEventListener('livewire:navigating', () => {
