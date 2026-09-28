@@ -26,9 +26,11 @@ class GaleriIndex extends Component
                 'page_title' => 'Galeri Foto',
             ]);
         } elseif ($this->slug === 'video') {
+            \App\Services\YoutubeSyncService::syncLatestVideos(15);
+
             return view('livewire.app.post-index', [
                 'items' => Post::where('id_format', 4)
-                    ->where('created_at', '<', now())
+                    ->where('created_at', '<=', now())
                     ->where('onoff', 1)
                     ->orderBy('created_at', 'desc')
                     ->paginate(6),
