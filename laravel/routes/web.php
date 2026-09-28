@@ -135,57 +135,76 @@ Route::middleware('guest')->group(function () {
     // Route::get('auth/callback', [App\Http\Controllers\Authgoogle::class, 'callback'])->name('auth-callback');
 });
 
-Route::get('images/{filename}', function ($filename) {
-    $path = storage_path('app/private/images/'.basename($filename));
-    if (! file_exists($path)) {
-        abort(404);
-    }
+Route::withoutMiddleware([\Illuminate\Session\Middleware\StartSession::class, \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class])->group(function () {
+    Route::get('images/{filename}', function ($filename) {
+        $path = storage_path('app/private/images/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images');
 
-Route::get('images/small/{filename}', function ($filename) {
-    $path = storage_path('app/private/small/'.basename($filename));
-    if (! file_exists($path)) {
-        abort(404);
-    }
+    Route::get('images/small/{filename}', function ($filename) {
+        $path = storage_path('app/private/small/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images-small');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images-small');
 
-Route::get('images/medium/{filename}', function ($filename) {
-    $path = storage_path('app/private/medium/'.basename($filename));
-    if (! file_exists($path)) {
-        abort(404);
-    }
+    Route::get('images/medium/{filename}', function ($filename) {
+        $path = storage_path('app/private/medium/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images-medium');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images-medium');
 
-Route::get('images/large/{filename}', function ($filename) {
-    $path = storage_path('app/private/large/'.basename($filename));
-    if (! file_exists($path)) {
-        abort(404);
-    }
+    Route::get('images/large/{filename}', function ($filename) {
+        $path = storage_path('app/private/large/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images-large');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images-large');
 
-Route::get('images/ori/{filename}', function ($filename) {
-    $path = storage_path('app/private/original/'.basename($filename));
-    if (! file_exists($path)) {
-        abort(404);
-    }
+    Route::get('images/ori/{filename}', function ($filename) {
+        $path = storage_path('app/private/original/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images-ori');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images-ori');
 
-Route::get('images/homeslide/{filename}', function ($filename) {
-    $path = storage_path('app/private/homeslide/'.basename($filename));
+    Route::get('images/homeslide/{filename}', function ($filename) {
+        $path = storage_path('app/private/homeslide/'.basename($filename));
+        if (! file_exists($path)) {
+            abort(404);
+        }
 
-    if (! file_exists($path)) {
-        abort(404);
-    }
-
-    return response()->file($path, ['Cache-Control' => 'public, max-age=604800']);
-})->name('images-homeslide');
+        return response()->file($path, [
+            'Cache-Control' => 'public, max-age=31536000, immutable',
+            'Expires' => gmdate('D, d M Y H:i:s \G\M\T', time() + 31536000),
+        ]);
+    })->name('images-homeslide');
+});
